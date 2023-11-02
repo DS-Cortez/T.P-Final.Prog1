@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-10-2023 a las 03:37:24
+-- Tiempo de generación: 02-11-2023 a las 04:22:05
 -- Versión del servidor: 8.0.34
 -- Versión de PHP: 8.2.4
 
@@ -41,11 +41,10 @@ CREATE TABLE `docentes` (
 --
 
 CREATE TABLE `examenes` (
-  `materia_del_examen` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
+  `materia_examen` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `nota_examen` int NOT NULL,
-  `docente_de_mesa` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
-  `tipo_examen` varchar(40) COLLATE utf8mb4_general_ci NOT NULL,
-  `fecha_mesa` varchar(10) COLLATE utf8mb4_general_ci NOT NULL
+  `docente_mesa` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `fecha_mesa` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -56,7 +55,7 @@ CREATE TABLE `examenes` (
 
 CREATE TABLE `materias` (
   `nombre_materia` varchar(10) COLLATE utf8mb4_general_ci NOT NULL,
-  `docente_a_cargo` varchar(10) COLLATE utf8mb4_general_ci NOT NULL,
+  `docente_encargado` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `cant_alumnos` int NOT NULL,
   `horas_curriculares` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -68,7 +67,7 @@ CREATE TABLE `materias` (
 --
 
 CREATE TABLE `usuario` (
-  `nombre_usuario` varchar(10) COLLATE utf8mb4_general_ci NOT NULL,
+  `id_usuario` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `clave` varchar(10) COLLATE utf8mb4_general_ci NOT NULL,
   `nombre` varchar(10) COLLATE utf8mb4_general_ci NOT NULL,
   `apellido` varchar(10) COLLATE utf8mb4_general_ci NOT NULL
@@ -88,7 +87,7 @@ ALTER TABLE `docentes`
 -- Indices de la tabla `examenes`
 --
 ALTER TABLE `examenes`
-  ADD PRIMARY KEY (`materia_del_examen`);
+  ADD PRIMARY KEY (`materia_examen`);
 
 --
 -- Indices de la tabla `materias`
@@ -100,7 +99,7 @@ ALTER TABLE `materias`
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`nombre_usuario`);
+  ADD PRIMARY KEY (`id_usuario`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
